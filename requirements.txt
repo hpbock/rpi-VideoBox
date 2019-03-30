@@ -1,0 +1,10 @@
+dbus-python==1.2.8
+decorator==4.4.0
+evento==1.0.1
+omxplayer-wrapper==0.3.2
+pathlib2==2.3.3
+pi-rc522==2.2.1
+pkg-resources==0.0.0
+RPi.GPIO==0.6.5
+six==1.12.0
+spidev==3.4
