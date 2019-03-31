@@ -19,7 +19,7 @@ while True:
             VIDEO_PATH = Path(str(uid[0])+"-"+str(uid[1])+"-"+str(uid[2])+"-"+str(uid[3]) + ".mkv")
 
             if VIDEO_PATH.is_file():
-                player = OMXPlayer(VIDEO_PATH)
+                player = OMXPlayer(VIDEO_PATH, args='-o both')
                 sleep(player.duration())
 
                 if player.can_quit():
