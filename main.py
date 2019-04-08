@@ -4,8 +4,18 @@
 from omxplayer.player import OMXPlayer
 from pathlib import Path
 from time import sleep
+from random import randint
 
 from pirc522 import RFID
+
+def tryFindVideosIn(searchPath):
+    files = []
+    basepath = Path(searchPath)
+    files_in_basepath = basepath.iterdir()
+    for item in files_in_basepath:
+        if item.is_file():
+            files.append(item)
+    return files
 
 def main():
     rdr = RFID()
@@ -19,8 +29,10 @@ def main():
                 print("UID: " + str(uid))
                 uidString = "{:02x}-{:02x}-{:02x}-{:02x}".format(uid[0], uid[1], uid[2], uid[3])
                 print("UID as string: " + uidString)
-    
-                VIDEO_PATH = Path(str(uid[0])+"-"+str(uid[1])+"-"+str(uid[2])+"-"+str(uid[3]) + ".mkv")
+
+                videos = tryFindVideosIn(uidString)
+
+                VIDEO_PATH = videos[randint(0, len(videos)-1)]
     
                 if VIDEO_PATH.is_file():
                     player = OMXPlayer(VIDEO_PATH, args='-o both')
