@@ -36,7 +36,7 @@ def main():
 
                 videos = tryFindVideosIn(uidString)
 
-                VIDEO_PATH = videos[randint(0, len(videos) - 1)]
+                VIDEO_PATH = Path(videos[randint(0, len(videos) - 1)])
 
                 if VIDEO_PATH.is_file():
                     player = OMXPlayer(VIDEO_PATH, args="-o both")
